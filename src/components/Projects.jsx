@@ -1,0 +1,77 @@
+import { motion } from 'framer-motion'
+
+const projects = [
+  {
+    name: 'RentGo',
+    url: 'http://rentgo.uz/',
+    description:
+      'Rental-focused web platform with a production-facing experience, built for users who need a fast and reliable property workflow.',
+  },
+  {
+    name: 'BookMed',
+    url: 'http://bookmed.uz/',
+    description:
+      'Medical booking website designed to streamline patient interaction, appointment flows, and service discovery in a clean digital experience.',
+  },
+]
+
+export default function Projects() {
+  return (
+    <motion.section
+      id="projects"
+      className="section-shell"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <p className="section-label">Projects</p>
+      <div className="mb-12 max-w-3xl">
+        <h2 className="section-title">Selected production work.</h2>
+        <p className="section-copy mt-6">
+          A small sample of websites delivered and launched for real-world use.
+        </p>
+      </div>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        {projects.map((project, index) => (
+          <motion.article
+            key={project.name}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.08, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.3 }}
+            className="glass-panel rounded-[30px] p-7 md:p-8"
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="mono-heading text-xs tracking-[0.28em] text-[var(--color-accent)] uppercase">
+                  Live Website
+                </p>
+                <h3 className="mono-heading mt-4 text-2xl text-white">{project.name}</h3>
+              </div>
+              <span className="h-px w-16 bg-[linear-gradient(90deg,rgba(0,212,255,0.75),rgba(123,97,255,0.75))]" />
+            </div>
+
+            <p className="mt-6 text-sm leading-7 text-white/64 md:text-[0.96rem]">
+              {project.description}
+            </p>
+
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="project-link mono-heading mt-8 inline-flex items-center rounded-full border border-[rgba(0,212,255,0.28)] bg-[linear-gradient(90deg,rgba(0,212,255,0.14),rgba(123,97,255,0.14))] px-4 py-3 text-sm tracking-[0.18em] text-[var(--color-accent)] uppercase transition-all duration-300 hover:border-[rgba(123,97,255,0.42)] hover:text-white"
+            >
+              {project.url}
+            </a>
+
+            <p className="mt-4 text-sm leading-7 text-white/48">
+              For more projects and details see my portfolio PDF file.
+            </p>
+          </motion.article>
+        ))}
+      </div>
+    </motion.section>
+  )
+}

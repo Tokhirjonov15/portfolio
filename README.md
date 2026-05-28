@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 # portfolio
 This is my resume and portfolio website
+https://tokhirjonov15.github.io/portfolio
 =======
 # React + Vite
 

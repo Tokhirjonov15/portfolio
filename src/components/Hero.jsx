@@ -109,7 +109,7 @@ export default function Hero() {
           animate="visible"
           type="button"
           onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-          className="absolute bottom-14 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-[0.68rem] uppercase tracking-[0.28em] text-[var(--color-muted)]"
+          className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 text-[0.68rem] uppercase tracking-[0.28em] text-[var(--color-muted)] md:flex"
         >
           Scroll
           <span className="scroll-chevron" />

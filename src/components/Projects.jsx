@@ -67,9 +67,11 @@ export default function Projects() {
               href={project.url}
               target="_blank"
               rel="noreferrer"
-              className="project-link mono-heading mt-8 inline-flex items-center rounded-full border border-[rgba(214,69,112,0.4)] bg-[rgba(214,69,112,0.1)] px-4 py-3 text-sm tracking-[0.18em] text-[var(--color-accent)] uppercase transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-text)]"
+              className="project-link mono-heading mt-8 inline-flex max-w-full items-center gap-2 rounded-full border border-[rgba(214,69,112,0.4)] bg-[rgba(214,69,112,0.1)] px-4 py-3 text-xs tracking-[0.14em] text-[var(--color-accent)] uppercase transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-text)] sm:text-sm"
             >
-              {project.url}
+              {/* 전체 URL 은 모바일 카드보다 넓어진다 → 도메인만 표시 */}
+              <span className="truncate">{new URL(project.url).hostname.replace(/^www\./, '')}</span>
+              <span aria-hidden>→</span>
             </a>
 
             <p className="mt-4 text-sm leading-7 text-white/48">

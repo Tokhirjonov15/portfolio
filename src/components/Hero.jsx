@@ -237,6 +237,29 @@ export default function Hero() {
               Building production-grade systems across modern web stacks, AI pipelines,
               and infrastructure.
             </motion.p>
+
+            <motion.div
+              custom={0.5}
+              variants={reveal}
+              initial="hidden"
+              animate="visible"
+              className="mt-8 flex flex-wrap gap-4"
+            >
+              <a
+                href={`${import.meta.env.BASE_URL}Alex-Tokhirjonov-Resume.pdf`}
+                download
+                className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-85"
+              >
+                Download CV
+              </a>
+              <a
+                href={`${import.meta.env.BASE_URL}Alex-Tokhirjonov-Portfolio.pdf`}
+                download
+                className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white/85 transition hover:border-white/60"
+              >
+                Portfolio PDF
+              </a>
+            </motion.div>
           </div>
         </div>
 

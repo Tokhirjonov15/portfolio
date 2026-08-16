@@ -31,6 +31,22 @@ export default function Contact() {
     >
       <p className="section-label">Contact</p>
       <h2 className="section-title">Available for full-time opportunities</h2>
+      <p className="mt-5 flex flex-wrap justify-center gap-4">
+        <a
+          href={`${import.meta.env.BASE_URL}Alex-Tokhirjonov-Resume.pdf`}
+          download
+          className="text-sm text-[var(--color-accent)] underline underline-offset-4"
+        >
+          Download CV (PDF)
+        </a>
+        <a
+          href={`${import.meta.env.BASE_URL}Alex-Tokhirjonov-Portfolio.pdf`}
+          download
+          className="text-sm text-[var(--color-accent)] underline underline-offset-4"
+        >
+          Portfolio (PDF)
+        </a>
+      </p>
 
       <div className="glass-panel relative mx-auto mt-10 flex max-w-3xl flex-col items-center gap-5 rounded-[32px] px-6 py-10">
         <button

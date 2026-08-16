@@ -16,17 +16,6 @@ const reveal = {
 export default function Hero() {
   return (
     <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* 잉크 배경 — 좌상단에서 스미는 따뜻한 빛 + 진홍 잔광 한 점 */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background:
-            'radial-gradient(1100px 700px at 18% 12%, rgba(234,229,220,0.05), transparent 60%),' +
-            'radial-gradient(700px 500px at 85% 90%, rgba(214,69,112,0.07), transparent 65%),' +
-            'var(--color-bg)',
-        }}
-      />
-
       <div className="section-shell flex min-h-screen items-center pt-24 before:hidden after:hidden">
         <div className="grid w-full items-center gap-12 text-center md:grid-cols-[minmax(300px,380px)_1fr] md:gap-16 md:text-left">
           <motion.div

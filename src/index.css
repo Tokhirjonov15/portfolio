@@ -49,6 +49,49 @@ body {
   color: var(--color-text);
 }
 
+/* ── 잉크 안개: 배경 앰비언트 (AmbientInk.jsx) ─────────────────
+   blur 얼룩은 transform 만 움직여 GPU 합성으로 처리된다. */
+.ink-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+.ink-blob-a {
+  width: 540px; height: 540px; left: -150px; top: -130px;
+  background: rgba(214, 69, 112, 0.10);
+  animation: ink-drift-a 26s ease-in-out infinite alternate;
+}
+.ink-blob-b {
+  width: 660px; height: 660px; right: -200px; top: 28%;
+  background: rgba(234, 229, 220, 0.055);
+  animation: ink-drift-b 34s ease-in-out infinite alternate;
+}
+.ink-blob-c {
+  width: 440px; height: 440px; left: 28%; bottom: -170px;
+  background: rgba(214, 69, 112, 0.065);
+  animation: ink-drift-c 40s ease-in-out infinite alternate;
+}
+@keyframes ink-drift-a { to { transform: translate(130px, 90px) scale(1.15); } }
+@keyframes ink-drift-b { to { transform: translate(-150px, -70px) scale(0.9); } }
+@keyframes ink-drift-c { to { transform: translate(100px, -120px) scale(1.12); } }
+
+/* 종이 먼지 — 아주 작게, 아주 드물게 깜빡인다 */
+.ink-dust {
+  position: absolute;
+  width: 2.5px; height: 2.5px;
+  border-radius: 50%;
+  background: rgba(234, 229, 220, 0.4);
+  opacity: 0;
+  animation-name: ink-dust-twinkle;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes ink-dust-twinkle {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 0.5; transform: translateY(-14px); }
+}
+
 /* 종이 결 — 인쇄물 촉감의 잔재. 은은해야 한다 */
 .noise-overlay {
   position: fixed;

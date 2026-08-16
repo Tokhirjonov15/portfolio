@@ -23,7 +23,7 @@ const skillGroups = [
   {
     title: 'Cloud & Product',
     skills: [
-      'AWS Lambda', 'API Gateway', 'SST', 'Vercel', 'Capacitor',
+      'AWS Lambda', 'API Gateway', 'SST', 'Vercel', 'Cloudflare', 'Firebase', 'Capacitor',
       'Eximbay Payments', 'OneSignal Push', 'Google Analytics 4',
       'Google Search Console', 'i18n (7 languages)', 'OAuth (Google/Apple/LINE)',
     ],

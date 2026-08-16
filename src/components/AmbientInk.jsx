@@ -2,7 +2,7 @@
 // 그 위에 미세한 종이 먼지가 깜빡인다. 전부 CSS 애니메이션(transform/opacity)이라
 // GPU 합성만 일어나고, prefers-reduced-motion 에서는 전역 규칙이 정지시킨다.
 
-const DUST_COUNT = 16
+const DUST_COUNT = 26
 
 // 결정적 의사난수 — 렌더마다 위치가 튀지 않도록 인덱스에서 유도
 const rand = (i, salt) => {
@@ -23,8 +23,8 @@ export default function AmbientInk() {
           style={{
             left: `${rand(i, 1) * 100}%`,
             top: `${rand(i, 2) * 100}%`,
-            animationDelay: `${rand(i, 3) * 8}s`,
-            animationDuration: `${6 + rand(i, 4) * 8}s`,
+            animationDelay: `${rand(i, 3) * 5}s`,
+            animationDuration: `${3.5 + rand(i, 4) * 4}s`,
           }}
         />
       ))}

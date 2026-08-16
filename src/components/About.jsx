@@ -38,7 +38,7 @@ export default function About() {
                 className="flex items-center justify-between rounded-2xl border border-white/8 bg-white/[0.02] px-4 py-3"
               >
                 <span className="text-sm text-white/78">{badge.label}</span>
-                <span className="mono-heading rounded-full border border-[rgba(0,212,255,0.22)] px-3 py-1 text-xs tracking-[0.18em] text-[var(--color-accent)] uppercase">
+                <span className="mono-heading rounded-full border border-[var(--color-border)] px-3 py-1 text-xs tracking-[0.18em] text-[var(--color-accent)] uppercase">
                   {badge.level}
                 </span>
               </div>

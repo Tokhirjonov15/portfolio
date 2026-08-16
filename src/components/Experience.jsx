@@ -51,7 +51,7 @@ export default function Experience() {
       </motion.div>
 
       <div className="relative mt-12 pl-8 md:pl-14">
-        <div className="absolute bottom-0 left-0 top-1 w-px bg-[linear-gradient(180deg,rgba(0,212,255,0.8),rgba(123,97,255,0.75))]" />
+        <div className="absolute bottom-0 left-0 top-1 w-px bg-[var(--color-border)]" />
 
         <div className="space-y-10">
           {experiences.map((experience, index) => (
@@ -66,7 +66,7 @@ export default function Experience() {
               <span className="absolute -left-[37px] top-8 h-4 w-4 rounded-full border border-[rgba(0,212,255,0.55)] bg-[var(--color-bg)] shadow-[0_0_24px_rgba(0,212,255,0.28)] md:-left-[61px]" />
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                 <div>
-                  <h3 className="mono-heading text-xl text-white">{experience.title}</h3>
+                  <h3 className="display-heading text-xl text-white">{experience.title}</h3>
                   <p className="mt-2 text-white/68">{experience.company}</p>
                 </div>
                 <p className="mono-heading text-xs tracking-[0.22em] text-[var(--color-accent)] uppercase">

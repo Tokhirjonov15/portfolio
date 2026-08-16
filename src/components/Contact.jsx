@@ -61,7 +61,7 @@ export default function Contact() {
           01020767640
         </a>
 
-        <span className="mono-heading rounded-full border border-[rgba(123,97,255,0.26)] bg-[rgba(123,97,255,0.08)] px-4 py-2 text-xs tracking-[0.18em] text-white/78 uppercase">
+        <span className="mono-heading rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2 text-xs tracking-[0.18em] text-white/78 uppercase">
           D-10 Job Seeker Visa · Seoul, South Korea
         </span>
 
@@ -69,7 +69,7 @@ export default function Contact() {
           href="https://github.com/Tokhirjonov15"
           target="_blank"
           rel="noreferrer"
-          className="project-link mono-heading inline-flex items-center rounded-full border border-[rgba(0,212,255,0.28)] bg-[linear-gradient(90deg,rgba(0,212,255,0.14),rgba(123,97,255,0.14))] px-4 py-3 text-sm tracking-[0.18em] text-[var(--color-accent)] uppercase transition-all duration-300 hover:border-[rgba(123,97,255,0.42)] hover:text-white"
+          className="project-link mono-heading inline-flex items-center rounded-full border border-[rgba(214,69,112,0.4)] bg-[rgba(214,69,112,0.1)] px-4 py-3 text-sm tracking-[0.18em] text-[var(--color-accent)] uppercase transition-all duration-300 hover:border-[var(--color-accent)] hover:text-white"
         >
           My Github Account
         </a>
@@ -81,7 +81,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="absolute right-5 top-5 rounded-full border border-[rgba(0,212,255,0.18)] bg-[rgba(8,12,16,0.92)] px-3 py-2 text-xs text-[var(--color-accent)]"
+              className="absolute right-5 top-5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface-strong)] px-3 py-2 text-xs text-[var(--color-accent)]"
             >
               Copied!
             </motion.div>

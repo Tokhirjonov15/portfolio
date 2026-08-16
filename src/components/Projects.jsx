@@ -54,9 +54,9 @@ export default function Projects() {
                 <p className="mono-heading text-xs tracking-[0.28em] text-[var(--color-accent)] uppercase">
                   Live Website
                 </p>
-                <h3 className="mono-heading mt-4 text-2xl text-white">{project.name}</h3>
+                <h3 className="display-heading mt-4 text-2xl text-white">{project.name}</h3>
               </div>
-              <span className="h-px w-16 bg-[linear-gradient(90deg,rgba(0,212,255,0.75),rgba(123,97,255,0.75))]" />
+              <span className="h-px w-16 bg-[var(--color-accent)]" />
             </div>
 
             <p className="mt-6 text-sm leading-7 text-white/64 md:text-[0.96rem]">
@@ -67,7 +67,7 @@ export default function Projects() {
               href={project.url}
               target="_blank"
               rel="noreferrer"
-              className="project-link mono-heading mt-8 inline-flex items-center rounded-full border border-[rgba(0,212,255,0.28)] bg-[linear-gradient(90deg,rgba(0,212,255,0.14),rgba(123,97,255,0.14))] px-4 py-3 text-sm tracking-[0.18em] text-[var(--color-accent)] uppercase transition-all duration-300 hover:border-[rgba(123,97,255,0.42)] hover:text-white"
+              className="project-link mono-heading mt-8 inline-flex items-center rounded-full border border-[rgba(214,69,112,0.4)] bg-[rgba(214,69,112,0.1)] px-4 py-3 text-sm tracking-[0.18em] text-[var(--color-accent)] uppercase transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-text)]"
             >
               {project.url}
             </a>

@@ -82,7 +82,7 @@ function SkillCard({ title, skills }) {
     >
       <div className="mb-5 flex items-center justify-between gap-4">
         <h3 className="mono-heading text-lg tracking-[0.16em] text-white uppercase">{title}</h3>
-        <span className="h-px flex-1 bg-[linear-gradient(90deg,rgba(0,212,255,0.7),transparent)]" />
+        <span className="h-px flex-1 bg-[var(--color-border)]" />
       </div>
 
       <div className="flex flex-wrap gap-2">

@@ -1,163 +1,8 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Float } from '@react-three/drei'
 import { motion } from 'framer-motion'
-import * as THREE from 'three'
 import profilePhoto from '../../uploads/profphoto.jpg'
 
-const roles = ['FullStack Engineer', 'AI Engineer', 'DevOps Engineer']
-
-const seededValue = (seed) => {
-  const value = Math.sin(seed * 127.1) * 43758.5453123
-  return value - Math.floor(value)
-}
-
-function useTypewriter(words) {
-  const [wordIndex, setWordIndex] = useState(0)
-  const [display, setDisplay] = useState('')
-  const [deleting, setDeleting] = useState(false)
-
-  useEffect(() => {
-    const word = words[wordIndex]
-    const finishedTyping = display === word
-    const finishedDeleting = display === ''
-
-    const timeout = window.setTimeout(
-      () => {
-        if (!deleting && !finishedTyping) {
-          setDisplay(word.slice(0, display.length + 1))
-          return
-        }
-
-        if (!deleting && finishedTyping) {
-          setDeleting(true)
-          return
-        }
-
-        if (deleting && !finishedDeleting) {
-          setDisplay(word.slice(0, display.length - 1))
-          return
-        }
-
-        setDeleting(false)
-        setWordIndex((current) => (current + 1) % words.length)
-      },
-      finishedTyping && !deleting ? 1350 : deleting ? 42 : 82,
-    )
-
-    return () => window.clearTimeout(timeout)
-  }, [deleting, display, wordIndex, words])
-
-  return display
-}
-
-function Particles() {
-  const pointsRef = useRef()
-  const { viewport, pointer } = useThree()
-  const count = typeof window !== 'undefined' && window.innerWidth < 640 ? 800 : 3200
-
-  const { positions, seeds } = useMemo(() => {
-    const basePositions = new Float32Array(count * 3)
-    const randomSeeds = new Float32Array(count * 3)
-
-    for (let index = 0; index < count; index += 1) {
-      const stride = index * 3
-      basePositions[stride] = (seededValue(index + 1) - 0.5) * 16
-      basePositions[stride + 1] = (seededValue(index + 2) - 0.5) * 10
-      basePositions[stride + 2] = (seededValue(index + 3) - 0.5) * 10
-
-      randomSeeds[stride] = seededValue(index + 4) * Math.PI * 2
-      randomSeeds[stride + 1] = seededValue(index + 5) * Math.PI * 2
-      randomSeeds[stride + 2] = seededValue(index + 6) * Math.PI * 2
-    }
-
-    return { positions: basePositions, seeds: randomSeeds }
-  }, [count])
-
-  const [initialAnimatedPositions] = useState(() => positions.slice())
-  const animatedRef = useRef(initialAnimatedPositions)
-
-  useFrame((state, delta) => {
-    if (!pointsRef.current) return
-
-    const targetX = pointer.x * viewport.width * 0.22
-    const targetY = pointer.y * viewport.height * 0.22
-    const positionAttribute = pointsRef.current.geometry.attributes.position.array
-    const animatedPositions = animatedRef.current
-    const time = state.clock.elapsedTime
-
-    for (let index = 0; index < count; index += 1) {
-      const stride = index * 3
-      const baseX = positions[stride]
-      const baseY = positions[stride + 1]
-      const baseZ = positions[stride + 2]
-      const seedX = seeds[stride]
-      const seedY = seeds[stride + 1]
-
-      const driftX = Math.sin(time * 0.22 + seedX) * 0.12
-      const driftY = Math.cos(time * 0.26 + seedY) * 0.12
-
-      animatedPositions[stride] += ((baseX + driftX + targetX * 0.08) - animatedPositions[stride]) * delta * 1.8
-      animatedPositions[stride + 1] += ((baseY + driftY + targetY * 0.08) - animatedPositions[stride + 1]) * delta * 1.8
-      animatedPositions[stride + 2] += ((baseZ + Math.sin(time * 0.18 + seedX) * 0.08) - animatedPositions[stride + 2]) * delta * 1.2
-
-      positionAttribute[stride] = animatedPositions[stride]
-      positionAttribute[stride + 1] = animatedPositions[stride + 1]
-      positionAttribute[stride + 2] = animatedPositions[stride + 2]
-    }
-
-    pointsRef.current.geometry.attributes.position.needsUpdate = true
-    pointsRef.current.rotation.y = time * 0.03
-  })
-
-  return (
-    <points ref={pointsRef}>
-        <bufferGeometry>
-          <bufferAttribute attach="attributes-position" args={[initialAnimatedPositions, 3]} />
-      </bufferGeometry>
-      <pointsMaterial
-        color="#00D4FF"
-        size={0.018}
-        sizeAttenuation
-        transparent
-        opacity={0.68}
-        blending={THREE.AdditiveBlending}
-        depthWrite={false}
-      />
-    </points>
-  )
-}
-
-function WireframeCore() {
-  const meshRef = useRef()
-
-  useFrame((state) => {
-    if (!meshRef.current) return
-    meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.35) * 0.3
-    meshRef.current.rotation.y += 0.0025
-  })
-
-  return (
-    <Float speed={1} rotationIntensity={0.28} floatIntensity={0.28}>
-      <mesh ref={meshRef} position={[0, 0, -1]}>
-        <torusKnotGeometry args={[1.55, 0.34, 220, 28]} />
-        <meshBasicMaterial color="#00D4FF" wireframe transparent opacity={0.16} />
-      </mesh>
-    </Float>
-  )
-}
-
-function HeroScene() {
-  return (
-    <Canvas camera={{ position: [0, 0, 6], fov: 54 }}>
-      <color attach="background" args={['#080C10']} />
-      <fog attach="fog" args={['#080C10', 6, 16]} />
-      <ambientLight intensity={0.2} />
-      <Particles />
-      <WireframeCore />
-    </Canvas>
-  )
-}
+// 인쇄물(CV/포트폴리오 PDF) 표지의 화면 버전 — 캔버스 파티클과 타이프라이터 대신
+// 세리프 표제 + 잉크 괘선 + 진홍 키커. 배경은 은은한 잉크 그라데이션 하나뿐.
 
 const reveal = {
   hidden: { opacity: 0, y: 28 },
@@ -169,17 +14,21 @@ const reveal = {
 }
 
 export default function Hero() {
-  const typedText = useTypewriter(roles)
-
   return (
     <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <HeroScene />
-      </div>
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(180deg,rgba(8,12,16,0.22),rgba(8,12,16,0.78))]" />
+      {/* 잉크 배경 — 좌상단에서 스미는 따뜻한 빛 + 진홍 잔광 한 점 */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background:
+            'radial-gradient(1100px 700px at 18% 12%, rgba(234,229,220,0.05), transparent 60%),' +
+            'radial-gradient(700px 500px at 85% 90%, rgba(214,69,112,0.07), transparent 65%),' +
+            'var(--color-bg)',
+        }}
+      />
 
-      <div className="section-shell flex min-h-screen items-center pt-24">
-        <div className="grid w-full items-center gap-10 text-center md:grid-cols-[minmax(320px,420px)_1fr] md:gap-16 md:text-left lg:grid-cols-[380px_1fr]">
+      <div className="section-shell flex min-h-screen items-center pt-24 before:hidden after:hidden">
+        <div className="grid w-full items-center gap-12 text-center md:grid-cols-[minmax(300px,380px)_1fr] md:gap-16 md:text-left">
           <motion.div
             custom={0}
             variants={reveal}
@@ -187,75 +36,76 @@ export default function Hero() {
             animate="visible"
             className="flex justify-center md:justify-start"
           >
-            <div className="glass-panel overflow-hidden rounded-[34px] p-3 shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_30px_90px_rgba(0,0,0,0.42)]">
+            <div className="glass-panel overflow-hidden rounded-[28px] p-2.5">
               <img
                 src={profilePhoto}
                 alt="Alex portrait"
-                className="h-52 w-44 rounded-[26px] object-cover object-center sm:h-64 sm:w-56 lg:h-[24rem] lg:w-[20rem]"
+                className="h-[320px] w-[260px] rounded-[22px] object-cover sm:h-[380px] sm:w-[300px]"
               />
             </div>
           </motion.div>
 
-          <div className="md:pl-6 lg:pl-12 xl:pl-20">
+          <div>
             <motion.p
-              custom={0.08}
+              custom={0.12}
               variants={reveal}
               initial="hidden"
               animate="visible"
-              className="mono-heading mb-6 text-[0.72rem] tracking-[0.42em] text-[var(--color-accent)] uppercase"
+              className="mono-heading text-[0.72rem] uppercase tracking-[0.34em] text-[var(--color-accent)]"
             >
-              FullStack . AI . DevOps
+              Full Stack &amp; DevOps Engineer · Seoul
             </motion.p>
+
             <motion.h1
-              custom={0.18}
+              custom={0.22}
               variants={reveal}
               initial="hidden"
               animate="visible"
-              data-text="ALEX"
-              className="glitch-text mono-heading m-0 text-[clamp(4rem,14vw,10rem)] font-bold leading-none tracking-[-0.12em] text-[var(--color-text)]"
+              className="display-heading mt-5 text-5xl leading-[1.05] sm:text-6xl lg:text-7xl"
             >
-              ALEX
+              Alex
+              <br />
+              Tokhirjonov
             </motion.h1>
-            <motion.div
-              custom={0.3}
+
+            {/* 인쇄물 표지의 잉크 괘선 */}
+            <motion.span
+              custom={0.32}
               variants={reveal}
               initial="hidden"
               animate="visible"
-              className="mt-6 flex min-h-8 justify-center md:justify-start"
-            >
-              <span className="mono-heading border-r border-[rgba(232,237,242,0.6)] pr-2 text-sm tracking-[0.26em] text-white/78 uppercase sm:text-base">
-                {typedText}
-              </span>
-            </motion.div>
+              className="mx-auto mt-8 block h-[3px] w-24 bg-[var(--color-text)] md:mx-0"
+            />
+
             <motion.p
               custom={0.42}
               variants={reveal}
               initial="hidden"
               animate="visible"
-              className="mt-8 max-w-2xl text-sm leading-8 text-white/56 sm:text-base"
+              className="mx-auto mt-8 max-w-2xl text-base leading-8 text-[var(--color-muted)] md:mx-0"
             >
-              Building production-grade systems across modern web stacks, AI pipelines,
-              and infrastructure.
+              I build products end to end — then run them in production. Currently operating a
+              medical-tourism platform in Seoul: 7 languages, real payments, real patients.
             </motion.p>
 
             <motion.div
-              custom={0.5}
+              custom={0.52}
               variants={reveal}
               initial="hidden"
               animate="visible"
-              className="mt-8 flex flex-wrap gap-4"
+              className="mt-9 flex flex-wrap justify-center gap-4 md:justify-start"
             >
               <a
                 href={`${import.meta.env.BASE_URL}Alex-Tokhirjonov-Resume.pdf`}
                 download
-                className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-black transition hover:opacity-85"
+                className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-[#13161b] transition hover:opacity-85"
               >
                 Download CV
               </a>
               <a
                 href={`${import.meta.env.BASE_URL}Alex-Tokhirjonov-Portfolio.pdf`}
                 download
-                className="rounded-full border border-white/25 px-6 py-3 text-sm font-semibold text-white/85 transition hover:border-white/60"
+                className="rounded-full border border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-text)] transition hover:border-[var(--color-accent)]"
               >
                 Portfolio PDF
               </a>
@@ -264,13 +114,13 @@ export default function Hero() {
         </div>
 
         <motion.button
-          custom={0.58}
+          custom={0.66}
           variants={reveal}
           initial="hidden"
           animate="visible"
           type="button"
           onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-          className="absolute bottom-14 flex flex-col items-center gap-3 text-[0.68rem] tracking-[0.28em] text-white/44 uppercase"
+          className="absolute bottom-14 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-[0.68rem] uppercase tracking-[0.28em] text-[var(--color-muted)]"
         >
           Scroll
           <span className="scroll-chevron" />

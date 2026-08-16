@@ -14,9 +14,18 @@ const skillGroups = [
   {
     title: 'Back-End',
     skills: [
-      'NodeJS', 'ExpressJS', 'Python', 'FastAPI', 'MongoDB',
-      'Mongoose', 'MySQL', 'Express-Session', 'JWT', 'Bcryptjs', 'Multer',
+      'NodeJS', 'ExpressJS', 'NestJS', 'tRPC', 'Python', 'FastAPI', 'MongoDB',
+      'Mongoose', 'PostgreSQL', 'Drizzle ORM', 'Prisma', 'MySQL', 'Supabase',
+      'Express-Session', 'JWT', 'Bcryptjs', 'Multer',
       'Socket.io', 'Cookie Parser', 'Dotenv', 'Form-Data',
+    ],
+  },
+  {
+    title: 'Cloud & Product',
+    skills: [
+      'AWS Lambda', 'API Gateway', 'SST', 'Vercel', 'Capacitor',
+      'Eximbay Payments', 'OneSignal Push', 'Google Analytics 4',
+      'Google Search Console', 'i18n (7 languages)', 'OAuth (Google/Apple/LINE)',
     ],
   },
   {
@@ -33,7 +42,7 @@ const skillGroups = [
   },
   {
     title: 'DevOps',
-    skills: ['Linux (Ubuntu)', 'Nginx', 'DNS', 'Firewall', 'Docker', 'PM2', 'GitHub Pages', 'Render'],
+    skills: ['Linux (Ubuntu)', 'Nginx', 'DNS', 'Firewall', 'Docker', 'PM2', 'GitHub Actions', 'GitHub Pages', 'Render'],
   },
   {
     title: 'Tools',

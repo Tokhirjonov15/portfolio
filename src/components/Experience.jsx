@@ -2,6 +2,18 @@ import { motion } from 'framer-motion'
 
 const experiences = [
   {
+    title: 'Full Stack & DevOps Engineer',
+    company: 'MeFlow Co., Ltd., Seoul, South Korea',
+    period: 'May 2026 – Present',
+    bullets: [
+      'Building Seoul Gijibae, a medical tourism platform serving international patients in 7 languages — web (Next.js), mobile app (React Native/Capacitor), and three role-based admin dashboards.',
+      'Integrated Eximbay international payments end-to-end: reservation deposit model, tiered refunds, server-side verification, and multilingual push notifications via OneSignal.',
+      'Run AWS serverless infrastructure (Lambda, API Gateway) deployed with SST, PostgreSQL on Supabase with Drizzle ORM and tRPC, and CI/CD through GitHub Actions and Vercel.',
+      'Own SEO and analytics: a 17,000-clinic public directory with structured data and hreflang, plus GA4 event instrumentation across web and app.',
+      'Work day-to-day in Korean with clinics, the payment provider, and regulatory requirements for foreign patient services.',
+    ],
+  },
+  {
     title: 'FullStack and DevOps Engineer',
     company: 'Digital City IT Center, Andijan, Uzbekistan',
     period: 'Sep 2025 – Feb 2026',

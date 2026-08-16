@@ -2,6 +2,12 @@ import { motion } from 'framer-motion'
 
 const projects = [
   {
+    name: 'Seoul Gijibae',
+    url: 'https://www.seoulgijibae.com/',
+    description:
+      'Medical tourism platform connecting international patients with verified Seoul clinics — multilingual booking in 7 languages, secure reservation deposits via Eximbay, and a clinic directory covering 17,000+ hospitals.',
+  },
+  {
     name: 'RentGo',
     url: 'http://rentgo.uz/',
     description:

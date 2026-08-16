@@ -30,10 +30,7 @@ export default function Contact() {
       viewport={{ once: true, amount: 0.3 }}
     >
       <p className="section-label">Contact</p>
-      <h2 className="section-title">Open to the next serious build.</h2>
-      <p className="section-copy mx-auto mt-6">
-        Available for full-time opportunities
-      </p>
+      <h2 className="section-title">Available for full-time opportunities</h2>
 
       <div className="glass-panel relative mx-auto mt-10 flex max-w-3xl flex-col items-center gap-5 rounded-[32px] px-6 py-10">
         <button

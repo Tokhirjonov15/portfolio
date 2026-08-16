@@ -21,7 +21,7 @@ const sections = [
 
 function SinglePagePortfolio() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[var(--color-bg)] text-[var(--color-text)]">
+    <div className="relative min-h-screen overflow-x-clip bg-[var(--color-bg)] text-[var(--color-text)]">
       <CustomCursor />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top,_rgba(0,212,255,0.08),_transparent_30%),radial-gradient(circle_at_bottom,_rgba(123,97,255,0.08),_transparent_28%)]" />
       <div className="noise-overlay" />
